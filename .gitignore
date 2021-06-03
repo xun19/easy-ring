@@ -1,0 +1,37 @@
+/easy-ring-demo/.DS_Store
+/easy-ring-demo/node_modules
+/easy-ring-demo/dist
+
+
+# local env files
+/easy-ring-demo/.env.local
+/easy-ring-demo/.env.*.local
+
+# Log files
+/easy-ring-demo/npm-debug.log*
+/easy-ring-demo/yarn-debug.log*
+/easy-ring-demo/yarn-error.log*
+/easy-ring-demo/pnpm-debug.log*
+
+# Editor directories and files
+/easy-ring-demo/.idea
+/easy-ring-demo/.vscode
+/easy-ring-demo/*.suo
+/easy-ring-demo/*.ntvs*
+/easy-ring-demo/*.njsproj
+/easy-ring-demo/*.sln
+/easy-ring-demo/*.sw?
+
+/easy-ring-build/.DS_Store
+/easy-ring-build/node_modules/
+/easy-ring-build/easy-ring/
+/easy-ring-build/npm-debug.log
+/easy-ring-build/yarn-error.log
+
+# Editor directories and files
+/easy-ring-build/.idea
+/easy-ring-build/*.suo
+/easy-ring-build/*.ntvs*
+/easy-ring-build/*.njsproj
+/easy-ring-build/*.sln
+
