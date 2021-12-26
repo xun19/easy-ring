@@ -1,6 +1,6 @@
 {
   "name": "easy-ring",
-  "version": "1.1.2",
+  "version": "1.1.5",
   "description": "a vue component to ring",
   "main": "easy-ring.js",
   "scripts": {

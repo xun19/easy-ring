@@ -3,7 +3,6 @@
     <easy-ring 
       :open="open"
       :ring="ring"
-      :src="src"
     />
     <button @click="openRing">打开铃声</button>
     <div v-for="(msg, index) in msgs" :key="index" @click="read">
@@ -24,15 +23,15 @@ export default {
   data: () => ({
     open: false,
     ring: false,
-    src: require('@/components/1.wav'),
-    msgs: []
+    msgs: [],
+    frequency: 0.1
   }),
   methods: {
     polling() {
       setInterval(() => {
         console.log('请求中...')
-        if (Math.random() > 0.98) {
-          this.msgs.push('收到一条信息')
+        if (Math.random() > (1 - this.frequency)) {
+          this.msgs.push('收到一条信息（请点击我来关铃）')
           this.ring = true
         }
       }, 1000)

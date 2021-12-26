@@ -1,24 +1,35 @@
-# easy-ring
+# 🎃easy-ring-demo
 
-## Project setup
-```
-npm install
-```
+### 前言
+本项目是easy-ring组件的使用DEMO
 
-### Compiles and hot-reloads for development
+
+### 本地查看
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### 如何交互
+可打开浏览器调试工具，查看打印信息，以便观察运行情况
+#### 1）等待消息
+这个demo模拟了一个等待消息的情景。项目启动、浏览器打开页面后即可自动运行，不需要其它操作。
 
-### Lints and fixes files
-```
-npm run lint
-```
+#### 2）开启铃声
+点击“打开铃声”按钮，此时铃声组件被开启。
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+然后只要保持页面不关闭、系统音量足够，就可以去干别的事啦~😀
+#### 3）接受到消息
+接受到消息后，页面会打印一行字“收到一条信息（请点击我来关铃）”，此时铃声响起。
+
+可以通过更改Home.vue文件里 frequency属性的大小（0~1范围）来更改接受到消息的频率，值越大则消息接受得越频繁，铃声也会响得更频繁。
+#### 4）关铃
+点击“收到一条信息（请点击我来关铃）”这行字即可关铃
+
+PS：这里的关铃不是指关闭**铃声组件**，只是让铃声从响闹状态暂时静默。一旦有新的消息再来，则会再次响起。如果是想要关闭铃声组件（以后有新消息也不再响铃），请将open参数更改成false。
+
+### 后言
+这个DEMO设计得比较简单，主要是为了理解使用方法。通过查看组件文档的步骤，大家可以自行根据需求场景的不同来灵活使用。
+
+
+
+

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <audio id="ringAudio" :src="src"></audio>
+        <audio :id="`easyRing${id}`" :src="src"></audio>
     </div>
 </template>
 
@@ -26,7 +26,8 @@
             // 播放速度
         },
         data: () => ({
-            active: false
+            id: parseInt(Math.random() * 1000000),
+            active: false,
         }),
         watch: {
             ring(val) {
@@ -65,7 +66,7 @@
         },
         mounted() {
             console.log('easy-ring:mounted')
-            audioObject = document.getElementById('ringAudio')
+            audioObject = document.getElementById(`easyRing${this.id}`)
         }
     }
 </script>
