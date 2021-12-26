@@ -15,13 +15,12 @@ Notice: 文件发生更新需要重启dev-server。后续通过nodemon实现自�
 
 构建生产包：
 ```
-npm run build
-// 打包结果为./easy-ring目录
+npm run build // 打包结果为./easy-ring目录
 ```
 
 发布
 ```
-// 进入./easy-ring目录下
-npm login
+npm login // 登录npm
+cd ./easy-ring  // 进入./easy-ring目录下
 npm publish
 ```
