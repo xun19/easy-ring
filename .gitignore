@@ -24,7 +24,7 @@
 
 /easy-ring-build/.DS_Store
 /easy-ring-build/node_modules/
-/easy-ring-build/easy-ring/
+/easy-ring-build/dist/
 /easy-ring-build/npm-debug.log
 /easy-ring-build/yarn-error.log
 

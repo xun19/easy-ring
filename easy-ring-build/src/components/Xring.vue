@@ -1,6 +1,6 @@
 <template>
     <div>
-        <audio id="audio" :src="src"></audio>
+        <audio :id="`easyRing${id}`" :src="src"></audio>
     </div>
 </template>
 
@@ -15,7 +15,7 @@
             },
             src: {
                 type: String,
-                default: require('./1.wav')
+                default: require('./easy-ring-default.wav')
             },
             open: {
                 type: Boolean,
@@ -26,7 +26,8 @@
             // 播放速度
         },
         data: () => ({
-            active: false
+            id: parseInt(Math.random() * 1000000),
+            active: false,
         }),
         watch: {
             ring(val) {
@@ -40,9 +41,10 @@
         },
         methods: {
             openRing() {
+                console.log('easy-ring:open')
                 this.active = true
                 audioObject.loop = false
-                audioObject.play() // 用于开启用户主动播放
+                audioObject.pause() // 用于开启用户主动播放
             },
             stopRing() {
                 this.active = false
@@ -50,7 +52,7 @@
                 audioObject.currentTime = 0
             },
             play() {
-                console.log('播放')
+                console.log('easy-ring:play')
                 if (!audioObject.loop) audioObject.loop = true
                 if (this.active) {
                     audioObject.currentTime = 0
@@ -58,13 +60,13 @@
                 }
             },
             pause() {
-                console.log('暂停')
+                console.log('easy-ring:pause')
                 audioObject.pause()
             }
         },
         mounted() {
-            console.log('mounted')
-            audioObject = document.getElementById('audio')
+            console.log('easy-ring:mounted')
+            audioObject = document.getElementById(`easyRing${this.id}`)
         }
     }
 </script>
