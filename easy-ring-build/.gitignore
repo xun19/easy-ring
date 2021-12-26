@@ -1,7 +1,7 @@
 .DS_Store
 node_modules/
-easy-ring/
 npm-debug.log
+dist/
 yarn-error.log
 
 # Editor directories and files

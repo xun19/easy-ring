@@ -1,18 +1,27 @@
-# easy-ring-build
+# ⚙easy-ring-build
 
-> a vue component to ring
+### 前言
+本项目用于构建打包、发布easy-ring组件的npm包
 
-## Build Setup
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
+### 本地调试
+开启dev-server
+```
 npm run dev
+```
+Notice: 文件发生更新需要重启dev-server。后续通过nodemon实现自动刷新
 
-# build for production with minification
+### 打包发布
+
+构建生产包：
+```
 npm run build
+// 打包结果为./easy-ring目录
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+发布
+```
+// 进入./easy-ring目录下
+npm login
+npm publish
+```
