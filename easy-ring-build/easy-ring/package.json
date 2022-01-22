@@ -1,11 +1,30 @@
 {
   "name": "easy-ring",
-  "version": "1.1.5",
-  "description": "a vue component to ring",
+  "version": "1.1.13",
+  "description": "a easy vue component to ring/beep",
   "main": "easy-ring.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "xun19",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xun19/easy-ring"
+
+  },
+  "keywords": [
+    "vue",
+    "component",
+    "ring",
+    "easy",
+    "beep sound",
+    "beep",
+    "sound",
+    "warning",
+    "warning tone",
+    "cue tone",
+    "tone",
+    "cue"
+  ]
 }
