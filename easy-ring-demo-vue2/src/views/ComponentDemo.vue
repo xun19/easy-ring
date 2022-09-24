@@ -4,28 +4,39 @@
     <div v-for="(msg, index) in msgs" :key="index" @click="read">
       {{msg}}
     </div>
-    <EasyRingVue 
+    <!-- <EasyRing
       :open="open"
       :ring.sync="ring"
       :loop="false"
+      defaultMusic="LITTLE_STAR"
+    /> -->
+    <EasyRing
+      :open="open"
+      :ring.sync="ring"
+      :loop="false"
+      defaultMusic="LITTLE_STAR"
+      musicText="1 2 3 4 5 6 7"
+      :src="testAudio"
     />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import EasyRingVue from '../components/easy-ring-vue'
+import { EasyRingVueComponent as EasyRing } from 'easy-ring'
+import testAudio from '@/assets/test.wav'
 
 export default {
   name: 'Home',
   components: {
-    EasyRingVue
+    EasyRing
   },
   data: () => ({
     open: false,
     ring: false,
     msgs: [],
     frequency: 0.1,
+    testAudio,
   }),
   methods: {
     polling() {

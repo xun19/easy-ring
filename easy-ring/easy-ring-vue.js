@@ -1,4 +1,3 @@
-/* eslint-disable */
 const{ MusicBox, musicTexts }  = require('./piano')
 
 let vue3h
@@ -7,7 +6,7 @@ try {
   vue3h = vue.h
 }
 catch(e) {
-  console.log('require h() fail.')
+  console.log('🌟【EASY-RING LOG】:require h() fail.（If you are not using Vue3, please ignore this message.）')
 }
 
 const createAudioId = () => {
@@ -120,7 +119,7 @@ const EasyRingVueComponent = {
       }
   },
   mounted() {
-      this._log('mounted')
+      this._log('EasyRingVueComponent mounted')
       this.audioObject = document.getElementById(this.id)
       this.audioObject.addEventListener('ended', () => {
         this.endHandle()

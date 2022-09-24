@@ -10,6 +10,7 @@
 <script>
 // @ is an alias to /src
 import { CommonEasyRing } from 'easy-ring'
+import testAudio from '@/assets/test.wav'
 
 export default {
   data: () => ({
@@ -38,7 +39,10 @@ export default {
     this.polling()
     this.myCommonEasyRing = new CommonEasyRing({
       loop: false,
-      log: true
+      log: true,
+      defaultMusic: 'LITTLE_STAR',
+      musicText: '1 2 3 4 5 6 7',
+      src: testAudio
     })
   }
 }

@@ -1,6 +1,8 @@
 import React from "react"
 import { CommonEasyRing } from 'easy-ring'
 // const { CommonEasyRing } = require('easy-ring')
+import testAudio from '../assets/test.wav'
+
 
 export default class Demo extends React.Component{
     constructor(props) {
@@ -36,8 +38,10 @@ export default class Demo extends React.Component{
         // 会调两次。解决：删掉/index.js的<StrictMode>(原因不明)
         this.polling()
         this.myCommonEasyRing = new CommonEasyRing({
-            loop: true,
-            log: false
+            loop: false,
+            log: true,
+            defaultMusic: 'LITTLE_STAR',
+            musicText: '1 2 3 4 5 6 7'
         })
     }
     render() {

@@ -1,27 +1,30 @@
-/* eslint-disable */
 const{ MusicBox, musicTexts }  = require('./piano')
 
 let React
 let h
+let ReactComponent
 try {
   React = require('react')
   h = React.createElement
+  ReactComponent = React.Component
 }
 catch(e) {
-  console.log('require React fail.')
+  console.log('🌟【EASY-RING LOG】:require React fail.（If you are not using React, please ignore this message.）')
+  ReactComponent = class {}
 }
 
-class EasyRingReactComponent extends React.Component {
-  static defaultProps = { // 想设置props的默认值需要在这里设置
-    open: false,
-    ring: false,
-    src: '',
-    loop: true,
-    log: true,
-    musicText: '',
-    defaultMusic: 'EZIOS_FAMILY',
-    ended: () => {}
-   }
+class EasyRingReactComponent extends ReactComponent {
+  // static defaultProps在class内部定义 需要react相关依赖进行解析。这里可以把defaultProps在class内部定义写在class外
+  // static defaultProps = { // 想设置props的默认值需要在这里设置
+  //   open: false,
+  //   ring: false,
+  //   src: '',
+  //   loop: true,
+  //   log: true,
+  //   musicText: '',
+  //   defaultMusic: 'EZIOS_FAMILY',
+  //   ended: () => {}
+  //  }
   constructor(props) {
     super(props) // 必须直接把constructor的props直接传入，不能自己传入任意对象
     this.state = {
@@ -107,15 +110,15 @@ class EasyRingReactComponent extends React.Component {
     }
   }
   componentDidMount() {
-    this._log('mounted')
+    this._log('EasyRingReactComponent mounted')
     const audioObject = document.getElementById(this.state.id)
     // this.setState({
     //   audioObject
     // })
     this.audioObject = audioObject
-    // this.audioObject.addEventListener('ended', () => {
-    //   this.endHandle()
-    // })
+    this.audioObject.addEventListener('ended', () => {
+      this.props.ended()
+    })
   }
   render() { // 用箭头就没法用this了
     return h('div', 
@@ -135,6 +138,18 @@ class EasyRingReactComponent extends React.Component {
           })
       ])
   }
+}
+
+// static defaultProps在class内部定义，需要react相关依赖进行解析。这里可以把defaultProps在class内部定义写在class外
+EasyRingReactComponent.defaultProps = { // 想设置props的默认值需要在这里设置
+  open: false,
+  ring: false,
+  src: '',
+  loop: true,
+  log: true,
+  musicText: '',
+  defaultMusic: 'EZIOS_FAMILY',
+  ended: () => {}
 }
 
 module.exports = EasyRingReactComponent

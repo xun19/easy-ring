@@ -1,6 +1,8 @@
 import React from "react"
 // import REasyRing from './easy-ring-react'
 import { EasyRingReactComponent as REasyRing } from 'easy-ring'
+import testAudio from '../assets/test.wav'
+
 
 export default class Demo extends React.Component{
     constructor(props) {
@@ -49,11 +51,21 @@ export default class Demo extends React.Component{
     }
     render() {
         return (<div className="home">
+          {/* <REasyRing 
+            ring={this.state.ring} 
+            open={this.state.open} 
+            loop={false}
+            ended={this.endedHandle}
+            defaultMusic='LITTLE_STAR'
+            musicText='1 2 3 4 5 6 7'
+            src={testAudio}
+          ></REasyRing> */}
           <REasyRing 
             ring={this.state.ring} 
             open={this.state.open} 
             loop={false}
             ended={this.endedHandle}
+            defaultMusic='LITTLE_STAR'
           ></REasyRing>
           <button onClick={this.openRing}>打开铃声</button>
               {

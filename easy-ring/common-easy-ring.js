@@ -1,4 +1,3 @@
-/* eslint-disable */
 const{ MusicBox, musicTexts }  = require('./piano')
 class CommonEasyRing {
     constructor(props = {}) {
@@ -26,7 +25,12 @@ class CommonEasyRing {
         this.audioObject = document.createElement('audio')
         this.audioObject.id = this.id
         this.audioObject.src = this.src
+        this.audioObject.addEventListener('ended', () => {
+            this._log(`pause the ring(id=${this.id})`)
+            this.isPlaying = false
+        })
         this.container.append(this.audioObject)
+        this._log('CommonEasyRing mounted')
     }
     _openRing() {
         this._log(`open the ring(id=${this.id})`)
