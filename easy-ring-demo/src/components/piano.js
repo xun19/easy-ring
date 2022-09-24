@@ -8,8 +8,8 @@ class MusicBox {
         musicText: '',  // 乐谱
         autoplay: false, // 自动弹奏速度
         type: 'sine',  // 音色类型  sine|square|triangle|sawtooth
-        duration: 2  // 键音延长时间
-  
+        duration: 2,  // 键音延长时间
+        endedCallback: function() {} // 结束回调
       };
   
       // this.selector = selector;
@@ -25,7 +25,7 @@ class MusicBox {
       this.arrFrequency = [262, 294, 330, 349, 392, 440, 494, 523, 587, 659, 698, 784, 880, 988, 1047, 1175, 1319, 1397, 1568, 1760, 1967];
       // 音符
       this.arrNotes = ['.1', '.2', '.3', '.4', '.5', '.6', '.7', '1', '2', '3', '4', '5', '6', '7', '1.', '2.', '3.', '4.', '5.', '6.', '7.'];
-  
+
       // 绘制钢琴
       // this.draw();
   
@@ -134,7 +134,11 @@ class MusicBox {
           i++;
   
           if(i >= musicArr.length){
-            this.opts.loop ? i = 0 : clearInterval(timer);
+            if (this.opts.loop) i = 0
+            else {
+              this.opts.endedCallback()
+              clearInterval(timer);
+            }
           }
         }
         catch (e) {
@@ -161,6 +165,9 @@ class MusicBox {
     TWO_TIGERS: '1 2 3 1 - 1 2 3 1 - 3 4 5 - 3 4 5 - - 5 6 5 4 3 - 1 - 5 6 5 4 3 - 1 - 2 - .5 - 1 - - 2 - .5 - 1 - - - -',
     LITTLE_STAR: '1 1 5 5 6 6 5 - 4 4 3 3 2 2 1 - 5 5 4 4 3 3 2 - 5 5 4 4 3 3 2 - 1 1 5 5 6 6 5 - 4 4 3 3 2 2 1 - - - -',
     EZIOS_FAMILY: '.6 - 1 - 2 - 3 - .6 - 1 - 2 - 1 - .6 - 1 - 2 - 3 - .6 - 1 - 2 - 1 - .6 - 1 - 2 - 3 - 6 - 7 - 1. - 2. - 3. - - - - - -'
+    // this.musicbox.playMusic('3. 2. 6 - - 3. 2. 5. - - - -')
+    // this.musicbox.playMusic('3. 2. 6 - - 3. 2. 5. - 4. - - 1 .7 1 .7 1 .7 1 .7 1 .7 1 .7 1 .7 1 .7 1 .7')
+    // this.musicbox.playMusic('3. 2. 6 - - 3. 2. 5. - 4. - - 4 4 - 4 4 - 4 4 4 - 4 4 - 5 5 - 5 5 5 - 5 5 5 - - -')
   }
   
   window.MusicBox = MusicBox;

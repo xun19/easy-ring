@@ -1,5 +1,6 @@
-import { MusicBox, musicTexts } from './components/piano';
-export default class CommonEasyRing {
+/* eslint-disable */
+const{ MusicBox, musicTexts }  = require('./piano')
+class CommonEasyRing {
     constructor(props = {}) {
         const { src, loop, log, musicText, defaultMusic } = props
         this.id = ''
@@ -88,3 +89,5 @@ export default class CommonEasyRing {
         this._pause()
     }
 }
+
+module.exports = CommonEasyRing

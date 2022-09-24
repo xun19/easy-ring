@@ -1,8 +1,10 @@
-import { MusicBox, musicTexts } from './piano'
+/* eslint-disable */
+const{ MusicBox, musicTexts }  = require('./piano')
 
 let vue3h
 try {
-  vue3h = require('vue').h  
+  const vue = require('vue')
+  vue3h = vue.h
 }
 catch(e) {
   console.log('require h() fail.')
@@ -13,7 +15,7 @@ const createAudioId = () => {
   return `easyRing${id}`
 }
 
-const EasyRingComponent = {
+const EasyRingVueComponent = {
   // template: '<div><audio></audio><input/></div>', // template没用？
   props: {
     ring: {
@@ -146,4 +148,4 @@ const EasyRingComponent = {
   }
 }
 
-export default EasyRingComponent
+module.exports = EasyRingVueComponent

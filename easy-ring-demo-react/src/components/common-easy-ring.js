@@ -1,4 +1,4 @@
-import { MusicBox, musicTexts } from './components/piano';
+import { MusicBox, musicTexts } from './piano';
 export default class CommonEasyRing {
     constructor(props = {}) {
         const { src, loop, log, musicText, defaultMusic } = props
