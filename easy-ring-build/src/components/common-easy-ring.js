@@ -1,8 +1,11 @@
-export default class CommonEasyRing {
+// 应该不存在不支持class的浏览器了吧？
+// 暂不考虑低配的浏览器了
+
+exports.default = class CommonEasyRing {
     constructor(props = {}) {
         const { src, loop, log } = props
         this.id = ''
-        this.src = src || '/easy-ring-default.wav'
+        this.src = src || './easy-ring-default.wav'
         this.loop = typeof loop === 'undefined' || true
         this.log = typeof log === 'undefined' || true
         this.active = false
@@ -21,6 +24,7 @@ export default class CommonEasyRing {
         this.audioObject.id = this.id
         this.audioObject.src = this.src
         this.container.append(this.audioObject)
+        this._log(`create the ring(id=${this.id})`)
     }
     _openRing() {
         this._log(`open the ring(id=${this.id})`)
@@ -36,7 +40,7 @@ export default class CommonEasyRing {
     }
     _play() {
         this._log(`play the ring(id=${this.id})`)
-        if (!this.audioObject.loop) this.audioObject.loop = true
+        if (!this.audioObject.loop && this.loop) this.audioObject.loop = true
         if (this.active) {
             this.audioObject.currentTime = 0
             this.audioObject.play()
@@ -47,7 +51,7 @@ export default class CommonEasyRing {
         this.audioObject.pause()
     }
     _log(info){
-        if (this.log)
+        if (info && this.log)
         console.log(`🌟【EASY-RING LOG】:${info}`)
     }
     open() {

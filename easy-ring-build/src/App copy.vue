@@ -21,10 +21,9 @@
 </template>
 
 <script>
-import EasyRing from './components/Xring.vue'
-// import CommonEasyRing from './components/common-easy-ring'
-// import EasyRingVue from './components/easy-ring-vue'
-import { CommonEasyRing, EasyRingVue } from 'easy-ring'
+import EasyRing from 'easy-ring'
+import CommonEasyRing from '../common-easy-ring'
+import EasyRingVue from '../components/easy-ring-vue'
 
 export default {
   name: 'Home',
@@ -60,7 +59,6 @@ export default {
     }
   },
   mounted() {
-    console.log(CommonEasyRing, EasyRingVue)
     this.polling()
     this.myCommonEasyRing = new CommonEasyRing()
   }

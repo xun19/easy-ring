@@ -1,5 +1,3 @@
-import Xring from './Xring.vue'
-Xring.install = Vue => {
-    Vue.component(Xring.name, Xring)
-}
-export default Xring
+// Object.defineProperty(exports, '__esModule', { value: true });
+exports.CommonEasyRing = require('./common-easy-ring').default
+exports.EasyRingVue = require('./easy-ring-vue').default

@@ -15,7 +15,7 @@ const EasyRingComponent = {
     },
     src: {
         type: String,
-        default: require('./1.wav')
+        default: require('./easy-ring-default.wav')
     },
     open: {
         type: Boolean,
@@ -109,4 +109,4 @@ const EasyRingComponent = {
   }
 }
 
-export default EasyRingComponent
+exports.default = EasyRingComponent
