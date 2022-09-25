@@ -27,15 +27,15 @@
 
 ## 参数
 
-| 参数名 | 类型    | 默认值 | 说明                                                         |
-| ------ | ------- | ------ | ------------------------------------------------------------ |
-| open   | Boolean | false  | 开启组件。将其设为true是使用本组件的前提 |
-| ring   | Boolean | false  | 是否开始播放音效。当设置为false时，则为关闭音效 |
-| src    | String  |  ''    | 铃声音频文件的地址，需传入绝对路径。如果不清楚如何获取绝对路径，可参见下文《关于音效.自定义音频源》一节，这其实非常简单             |
-| loop    | Boolean  |  true    |  是否循环播放。在不同开发环境下使用会有细微差异，详见下文《关于循环播放和单播放》               |
-|   defaultMusic  | String  |  'EZIOS_FAMILY'    | 默认铃声曲目。目前可选值：'LITTLE_STAR' \| 'TWO_TIGERS' \| 'EZIOS_FAMILY' \| 'CASTLE_IN_THE_SKY'               |
-|  musicText   | String  |  ''    |     以简谱来自定义音效。详见下文《关于音效.自定义简谱音效》一节           |
-|  log   | Boolean  |  true    | 是否打印日志               |
+| 参数名 | 类型    | 是否必须 | 默认值 | 说明                                                         |
+| ------ | ------- | ------ | ------ | ------------------------------------------------------------ |
+| open   | Boolean | √ | false  | 开启组件。将其设为true是使用本组件的前提 |
+| ring   | Boolean | √ |false  | 是否开始播放音效。当设置为false时，则为关闭音效 |
+| src    | String  | × | ''    | 铃声音频文件的地址，需传入绝对路径。如果不清楚如何获取绝对路径，可参见下文《关于音效.自定义音频源》一节，这其实非常简单             |
+| loop    | Boolean | × |  true    |  是否循环播放。在不同开发环境下使用会有细微差异，详见下文《关于循环播放和单播放》               |
+|   defaultMusic  | String  | × |'EZIOS_FAMILY'    | 默认铃声曲目。目前可选值：'LITTLE_STAR' \| 'TWO_TIGERS' \| 'EZIOS_FAMILY' \| 'CASTLE_IN_THE_SKY'               |
+|  musicText   | String  | × | ''    |     以简谱来自定义音效。详见下文《关于音效.自定义简谱音效》一节           |
+|  log   | Boolean  | × |true    | 是否打印日志               |
 
 
 ## 安装
