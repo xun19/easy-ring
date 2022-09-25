@@ -1,7 +1,7 @@
 {
   "name": "easy-ring",
-  "version": "2.0.0-alpha.6",
-  "description": "A easy 、general and cool web component(for js 、Vue、React) to ring/beep.",
+  "version": "2.0.0-alpha.7",
+  "description": "A easy 、general and cool web component to ring/beep.(for js 、Vue、React)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

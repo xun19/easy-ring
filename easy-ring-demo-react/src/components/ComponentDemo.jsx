@@ -3,7 +3,7 @@ import React from "react"
 import { EasyRingReactComponent as REasyRing } from 'easy-ring'
 import testAudio from '../assets/test.wav'
 
-
+// react本地服务器的问题好多（改一下组件入参，组件直接就哑了。还得重开一个页面标签）
 export default class Demo extends React.Component{
     constructor(props) {
         super(props)
@@ -63,9 +63,10 @@ export default class Demo extends React.Component{
           <REasyRing 
             ring={this.state.ring} 
             open={this.state.open} 
-            loop={false}
+            loop={true}
             ended={this.endedHandle}
             defaultMusic='LITTLE_STAR'
+            musicText='1 .7 1 3 .7 - - .3 .6 .5 .6 1 .5 - - .3 .3 .4 .3 .4 1 3 - - - 3 - - 1 - - 1 - - -'
           ></REasyRing>
           <button onClick={this.openRing}>打开铃声</button>
               {

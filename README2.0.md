@@ -10,3 +10,5 @@
 - EasyRing for React: React组件式的使用风格
 - 默认音效用Web Audio API实现
 - 增加自定义简谱音调的铃声配置
+
+欢迎提供更多好听的简谱

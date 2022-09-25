@@ -39,7 +39,7 @@ export default class Demo extends React.Component{
         this.polling()
         this.myCommonEasyRing = new CommonEasyRing({
             loop: false,
-            log: true,
+            log: false,
             defaultMusic: 'LITTLE_STAR',
             musicText: '1 2 3 4 5 6 7'
         })

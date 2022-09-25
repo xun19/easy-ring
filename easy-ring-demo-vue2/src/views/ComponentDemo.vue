@@ -13,10 +13,8 @@
     <EasyRing
       :open="open"
       :ring.sync="ring"
-      :loop="false"
-      defaultMusic="LITTLE_STAR"
-      musicText="1 2 3 4 5 6 7"
-      :src="testAudio"
+      :loop="true"
+      defaultMusic="CASTLE_IN_THE_SKY"
     />
   </div>
 </template>
