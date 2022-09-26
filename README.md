@@ -27,7 +27,7 @@
 
 ## 参数
 
-| 参数名 | 类型    | 是否必须 | 默认值 | 说明                                                         |
+| 参数名 | 类型    | 必须 | 默认值 | 说明                                                         |
 | ------ | ------- | ------ | ------------------ | ------------------------------------------------------------ |
 | open   | Boolean | √ | false  | 开启组件。将其设为true是使用本组件的前提 |
 | ring   | Boolean | √ |false  | 是否开始播放音效。当设置为false时，则为关闭音效 |
@@ -36,6 +36,7 @@
 |   defaultMusic  | String  | × |'EZIOS_FAMILY'    | 默认铃声曲目。目前可选值：'LITTLE_STAR' \| 'TWO_TIGERS' \| 'EZIOS_FAMILY' \| 'CASTLE_IN_THE_SKY'               |
 |  musicText   | String  | × | ''    |     以简谱来自定义音效。详见下文《关于音效.自定义简谱音效》一节           |
 |  log   | Boolean  | × |true    | 是否打印日志               |
+|  ended   | Function  | × |function() {}   | 音频（一次）播放结束事件回调              |
 
 
 ## 安装
@@ -75,14 +76,14 @@ export default {
         }
     },
     methods: {
-        openCompoent() {
+        openComponent() {
             if (confirm('我们需要您同意开启声音 ｜ We need your consent to turn on sound')) {
                 this.open = true
             }
         }
     },
     mounted() {
-        this.openCompoent()
+        this.openComponent()
 
         msg.listening()
 

@@ -1,7 +1,7 @@
 const{ MusicBox, musicTexts }  = require('./piano')
 class CommonEasyRing {
     constructor(props = {}) {
-        const { src, loop, log, musicText, defaultMusic } = props
+        const { src, loop, log, musicText, defaultMusic, ended } = props
         this.id = ''
         this.src = src
         this.loop = typeof loop === 'undefined' ? true : loop
@@ -13,6 +13,7 @@ class CommonEasyRing {
         this.musicText = musicText || ''
         this.defaultMusic =  defaultMusic || 'EZIOS_FAMILY'
         this.musicbox = null
+        this.ended = ended || (() => {})
         this._createAudioId()
         this._createAudioObject()
     }
@@ -28,6 +29,7 @@ class CommonEasyRing {
         this.audioObject.addEventListener('ended', () => {
             this._log(`pause the ring(id=${this.id})`)
             this.isPlaying = false
+            this.ended()
         })
         this.container.append(this.audioObject)
         this._log('CommonEasyRing mounted')

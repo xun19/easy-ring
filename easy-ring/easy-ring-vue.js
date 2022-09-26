@@ -115,6 +115,7 @@ const EasyRingVueComponent = {
         this._log('end')
         if (!this.$props.loop) {
           this.$emit('update:ring', false)
+          this.$emit('ended')
         }
       }
   },
@@ -133,10 +134,12 @@ const EasyRingVueComponent = {
       },
       [
         h('audio', {
-          attrs: {
+          attrs: vue3h ? '' : {
             id: this.id,
             src: this.src
           },
+          id: this.id,
+          src: this.src,
           class: 'easy-ring'
           // onEnded() { // 事件监听器应以 onXxx 的形式书写
           //   this.endHandle()
