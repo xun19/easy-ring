@@ -134,7 +134,7 @@ const EasyRingVueComponent = {
       },
       [
         h('audio', {
-          attrs: vue3h ? '' : {
+          attrs: {
             id: this.id,
             src: this.src
           },

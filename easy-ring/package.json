@@ -1,6 +1,6 @@
 {
   "name": "easy-ring",
-  "version": "2.0.0-alpha.9",
+  "version": "2.0.0-alpha.27",
   "description": "A easy 、general and cool web component to ring/beep.(for js 、Vue、React)",
   "main": "index.js",
   "scripts": {

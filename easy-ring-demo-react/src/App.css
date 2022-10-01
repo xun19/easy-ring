@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+
+.ant-switch {
+  background-color: rgb(233 37 37)!important;
+}
+
+.ant-switch.ant-switch-checked {
+  background-color: #1890ff!important;
+}
