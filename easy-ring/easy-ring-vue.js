@@ -73,6 +73,7 @@ const EasyRingVueComponent = {
             loop: this.$props.loop,
             endedCallback: this.$props.loop ? () => {} : () => { this.endHandle() }
           })
+          this.$emit('update:ring', false) // 约定：强制用双向绑定
       },
       stopRing() {
           // TODO: 还可以优化
@@ -80,6 +81,7 @@ const EasyRingVueComponent = {
           this.active = false
           this.audioObject.pause()
           this.audioObject.currentTime = 0
+          this.$emit('update:ring', false) // 约定：强制用双向绑定
       },
       play() {
           this._log(`play the ring(id=${this.id})`) // this.props 要写成 this.$props
@@ -106,6 +108,7 @@ const EasyRingVueComponent = {
           } else {
             this.musicbox.stopMusic()
           }
+          this.$emit('update:ring', false) // 约定：强制用双向绑定
       },
       _log(info) {
           if (info && this.$props.log)

@@ -28,7 +28,10 @@
         正在接收消息... | Waiting message...({{intervalCount}}s)
       </template>
       <template v-else>
-        你收到了新消息！ | You receive new messages!
+        <div style="display: flex;justify-content:center;flex-wrap: wrap;">
+          <div style="flex-basis: 100%;">你收到了新消息！ | You receive new messages!</div>
+          <div style="margin-top: 30px;">(点击图标查看消息、并停止声音 | Click the icon to view the message and stop the sound.)</div>
+        </div>
       </template>
     </div>
   </div>
@@ -48,10 +51,7 @@ onUnmounted(() => {
 })
   
 
-const myEasyRing = new CommonEasyRing({
-  loop: false,
-  musicText: '1 2 3 4 5 6 7 1.'
-})
+const myEasyRing = new CommonEasyRing()
 
 ElMessageBox.alert('我们需要您同意开启声音 ｜ We need your consent to turn on sound.', '', {
   confirmButtonText: 'OK',

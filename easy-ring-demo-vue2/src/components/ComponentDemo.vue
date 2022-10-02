@@ -2,7 +2,7 @@
   <div>
     <EasyRing 
       :open="open"
-      :ring="ring"
+      :ring.sync="ring"
     />
 
     <div class="msg">
@@ -26,7 +26,10 @@
         正在接收消息... | Waiting message...({{intervalCount}}s)
       </template>
       <template v-else>
-        你收到了新消息！ | You receive new messages!
+        <div style="display: flex;justify-content:center;flex-wrap: wrap;">
+          <div style="flex-basis: 100%;">你收到了新消息！ | You receive new messages!</div>
+          <div style="margin-top: 30px;">(点击图标查看消息、并停止声音 | Click the icon to view the message and stop the sound.)</div>
+        </div>
       </template>
     </div>
   </div>
@@ -60,11 +63,10 @@ export default {
     }
   },
   mounted() {
-    this.$confirm('We need your consent to turn on sound.', '', {
+    this.$confirm('我们需要您同意开启声音 ｜ We need your consent to turn on sound.', '', {
       confirmButtonText: 'OK',
     }).then(() => {
       this.open = true
-      this.ring = false // TODO: 需要强制切换一下？
     }).catch(() => {})
 
     const msg = new Msg({
@@ -81,7 +83,9 @@ export default {
       this.intervalCount += 1
     }, 1000)
   },
-  destroy(){}
+  beforeDestroy(){
+    this.open = false // TODO: 切换开关的时候没有把声音关掉
+  }
 }
 </script>
 

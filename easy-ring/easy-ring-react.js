@@ -32,12 +32,14 @@ const EasyRingReactComponent = (props) => {
       setActive(true)
       audioObject.loop = false
       audioObject.pause() // 用于开启用户主动播放
+      props.setRing(false)
   }
   const _stopRing = () => {
       _log(`close the ring(id=${id.current})`)
       setActive(false)
       audioObject.pause()
       audioObject.currentTime = 0
+      props.setRing(false)
   }
 
   const _play = () => {
@@ -67,12 +69,19 @@ const EasyRingReactComponent = (props) => {
       } else {
           musicbox.stopMusic()
       }
-      props.ended()
+      props.setRing(false)
   }
 
   const _log = (info) => {
       if (info && props.log)
       console.log(`🌟【EASY-RING LOG】:${info}`)
+  }
+
+  const endedHandle = () => {
+    props.ended()
+    if (!props.loop) {
+      props.setRing(false)
+    }
   }
 
   useEffect(() => {
@@ -81,7 +90,7 @@ const EasyRingReactComponent = (props) => {
       setAudioObject(document.getElementById(id.current))
       setMusicbox(new MusicBox({
         loop: props.loop,
-        endedCallback: props.loop ? () => {} : () => { props.ended() }
+        endedCallback: props.loop ? () => {} : () => { endedHandle() }
       }))
     }
   }, [])
@@ -110,7 +119,7 @@ const EasyRingReactComponent = (props) => {
           src: props.src,
           className: 'easy-ring',
           onEnded: () => {
-            props.ended()
+            endedHandle()
           },
           key: id.current // 必须给key
         })
@@ -125,6 +134,7 @@ EasyRingReactComponent.defaultProps = {
   log: true,
   musicText: '',
   defaultMusic: 'EZIOS_FAMILY',
+  setRing: () => {},
   ended: () => {}
 }
 

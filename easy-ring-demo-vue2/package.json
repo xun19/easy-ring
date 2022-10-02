@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "easy-ring": "^2.0.0-alpha.9",
+    "easy-ring": "^2.0.0-beta.6",
     "element-ui": "^2.15.10",
     "vue": "^2.6.14"
   },

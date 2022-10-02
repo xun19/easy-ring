@@ -18,7 +18,10 @@
         正在接收消息... | Waiting message...({{intervalCount}}s)
       </template>
       <template v-else>
-        你收到了新消息！ | You receive new messages!
+        <div style="display: flex;justify-content:center;flex-wrap: wrap;">
+          <div style="flex-basis: 100%;">你收到了新消息！ | You receive new messages!</div>
+          <div style="margin-top: 30px;">(点击图标查看消息、并停止声音 | Click the icon to view the message and stop the sound.)</div>
+        </div>
       </template>
     </div>
   </div>
@@ -27,6 +30,10 @@
 <script>
 import Msg from '../utils/msg'
 import { CommonEasyRing } from 'easy-ring'
+
+const msg = new Msg({
+  frequency: 0.1
+})
 
 export default {
   data() {
@@ -50,16 +57,12 @@ export default {
   mounted() {
     this.myEasyRing = new CommonEasyRing()
 
-    this.$confirm('We need your consent to turn on sound.', '', {
+    this.$confirm('我们需要您同意开启声音 ｜ We need your consent to turn on sound.', '', {
       confirmButtonText: 'OK',
     }).then(() => {
       this.myEasyRing.open()
       // TODO: 需要强制切换一下？
     }).catch(() => {})
-
-    const msg = new Msg({
-      frequency: 0.1
-    })
     msg.listening()
     msg.onReceived((newMsg) => {
       this.myEasyRing.ring()

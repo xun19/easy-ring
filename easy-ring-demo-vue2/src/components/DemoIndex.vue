@@ -34,7 +34,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .logo {
     height: 6em;
     padding: 1.5em;
@@ -45,6 +45,14 @@ export default {
 }
 .logo.vue:hover {
     filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+.el-switch__core {
+    background-color: rgb(233 37 37)!important;
+}
+
+.el-switch.is-checked .el-switch__core {
+    background-color: #409EFF!important;
 }
 </style>
     

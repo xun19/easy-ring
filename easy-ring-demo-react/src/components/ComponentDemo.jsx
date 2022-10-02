@@ -35,13 +35,18 @@ const ComponentDemo = () => {
             setMsgList([])
         }
         setRing(false)
-      }
+    }
+
+    const endedHandle = () => { // 你的ended回调处理函数 | Your ended callback handler
+        // setRing(false)
+        console.log('ended')
+    }
 
     useEffect(() => {
         msg.listening()
         msg.onReceived((newMsg) => {
             setRing(true)
-            setMsgList([...msgList, newMsg])
+            setMsgList(list => [...list, newMsg])
             setNewMsgCount(count => count + 1)
         })
         setInterval(() => {
@@ -63,6 +68,9 @@ const ComponentDemo = () => {
             <EasyRing 
                 ring={ring} 
                 open={open} 
+                loop={false}
+                setRing={setRing}
+                ended={endedHandle}
             />
 
             <div style={{display: 'flex', justifyContent: 'center',alignItems: 'center', flexWrap: 'wrap', height: '200px'}}>
@@ -88,14 +96,15 @@ const ComponentDemo = () => {
                             正在接收消息... | Waiting message...{intervalCount}s
                         </span>
                     ) : (
-                        <span>
-                            你收到了新消息！ | You receive new messages!
-                        </span>
+                        <div style={{display: 'flex',justifyContent:'center',flexWrap: 'wrap'}}>
+                            <div style={{flexBasis: '100%', textAlign: 'center'}}>你收到了新消息！ | You receive new messages!</div>
+                            <div style={{marginTop: 30}}>(点击图标查看消息、并停止声音 | Click the icon to view the message and stop the sound.)</div>
+                        </div>
                     ) }
                 </div>
             </div>
             <Modal title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                <p>We need your consent to turn on sound.</p>
+                <p>我们需要您同意开启声音 ｜ We need your consent to turn on sound.</p>
             </Modal>
         </div>
     )
