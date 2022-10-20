@@ -47,8 +47,12 @@ class CommonEasyRing {
     _stopRing() {
         this._log(`close the ring(id=${this.id})`)
         this.active = false
-        this.audioObject.pause()
-        this.audioObject.currentTime = 0
+        if (this.src && this.audioObject) {
+            this.audioObject.pause()
+            this.audioObject.currentTime = 0
+        } else if (this.musicbox) {
+            this.musicbox.stopMusic()
+        }
     }
     _play() {
         this._log(`play the ring(id=${this.id})`)
@@ -72,9 +76,10 @@ class CommonEasyRing {
     _pause() {
         this._log(`pause the ring(id=${this.id})`)
         this.isPlaying = false
-        if (this.src) {
+        if (this.src && this.audioObject) { // TODO: 代码优化 复用
             this.audioObject.pause()
-        } else {
+            this.audioObject.currentTime = 0
+        } else if (this.musicbox) {
             this.musicbox.stopMusic()
         }
     }

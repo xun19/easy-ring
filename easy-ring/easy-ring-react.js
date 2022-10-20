@@ -23,8 +23,7 @@ const EasyRingReactComponent = (props) => {
   const id = useRef(_createAudioId())
   const [active, setActive] = useState(false)
   const [audioObject, setAudioObject] = useState(null)
-  const [musicbox, setMusicbox] = useState(null)
-  // let audioObject = null // 与视图无关，实际上并不需要写在state里
+  const musicbox = useRef(null)
 
   const _openRing = () => {
       _log(`open the ring(id=${id.current})`)
@@ -37,9 +36,13 @@ const EasyRingReactComponent = (props) => {
   const _stopRing = () => {
       _log(`close the ring(id=${id.current})`)
       setActive(false)
-      audioObject.pause()
-      audioObject.currentTime = 0
-      props.setRing(false)
+      if (props.src && audioObject) {
+        audioObject.pause()
+        audioObject.currentTime = 0
+        props.setRing(false)
+      } else if (musicbox.current) {
+          musicbox.current.stopMusic()
+      }
   }
 
   const _play = () => {
@@ -53,9 +56,9 @@ const EasyRingReactComponent = (props) => {
             audioObject.play()
         } else {
             if (props.musicText) {
-              musicbox.playMusic(props.musicText)
+              musicbox.current.playMusic(props.musicText)
             } else if(musicTexts[props.defaultMusic]) {
-              musicbox.playMusic(musicTexts[props.defaultMusic])
+              musicbox.current.playMusic(musicTexts[props.defaultMusic])
             } else {
               _log(`💔invalid type of defaultMusicText in ths ring(id=${id.current}).`)
             }
@@ -67,7 +70,7 @@ const EasyRingReactComponent = (props) => {
       if (props.src) {
           audioObject.pause()
       } else {
-          musicbox.stopMusic()
+          musicbox.current.stopMusic()
       }
       props.setRing(false)
   }
@@ -88,11 +91,12 @@ const EasyRingReactComponent = (props) => {
     if (!audioObject) {
       _log('EasyRingReactComponent(function) mounted')
       setAudioObject(document.getElementById(id.current))
-      setMusicbox(new MusicBox({
+      musicbox.current = new MusicBox({
         loop: props.loop,
         endedCallback: props.loop ? () => {} : () => { endedHandle() }
-      }))
+      })
     }
+    return _stopRing
   }, [])
 
   useEffect(() => {

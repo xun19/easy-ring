@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { CommonEasyRing } from 'easy-ring'
+// import testAudio from '../assets/test.wav'
 import { Modal } from 'antd'
 import Msg from '../utils/msg'
 import {
@@ -7,7 +8,9 @@ import {
   } from '@ant-design/icons'
 import { Badge, Dropdown, Menu } from 'antd';
 
-const myEasyRing = new CommonEasyRing()
+const myEasyRing = new CommonEasyRing({
+    // src: testAudio
+})
 const msg = new Msg({
     frequency: 0.1
 })
@@ -48,8 +51,7 @@ const FunctionDemo = () => {
             setIntervalCount(count => count + 1)
         }, 1000)
         return () => {
-            myEasyRing.stop() // TODO: 没法正确关闭的这个错误，还会影响easy-ring组件的loop？是因为音频元素没获取到（不是没生成）【感觉这块得弄成异步x】
-            myEasyRing.close() // TODO: 关闭还会响
+            myEasyRing.close()
             msg.stopListening()
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps

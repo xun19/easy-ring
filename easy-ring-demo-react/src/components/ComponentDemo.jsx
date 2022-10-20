@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { EasyRingReactComponent as EasyRing } from 'easy-ring'
 import { Modal } from 'antd'
+// import testAudio from '../assets/test.wav'
 import Msg from '../utils/msg'
 import {
     MessageOutlined
@@ -68,7 +69,8 @@ const ComponentDemo = () => {
             <EasyRing 
                 ring={ring} 
                 open={open} 
-                loop={false}
+                // src={testAudio}
+                loop={true}
                 setRing={setRing}
                 ended={endedHandle}
             />

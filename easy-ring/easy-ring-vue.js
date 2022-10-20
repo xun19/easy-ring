@@ -79,8 +79,12 @@ const EasyRingVueComponent = {
           // TODO: 还可以优化
           this._log(`close the ring(id=${this.id})`)
           this.active = false
-          this.audioObject.pause()
-          this.audioObject.currentTime = 0
+          if (this.src && this.audioObject) {
+              this.audioObject.pause()
+              this.audioObject.currentTime = 0
+          } else if (this.musicbox) {
+              this.musicbox.stopMusic()
+          }
           this.$emit('update:ring', false) // 约定：强制用双向绑定
       },
       play() {
@@ -128,6 +132,14 @@ const EasyRingVueComponent = {
       this.audioObject.addEventListener('ended', () => {
         this.endHandle()
       })
+  },
+  beforeUnmount() {
+    this.stopRing()
+    this._log('EasyRingVueComponent unmounted')
+  },
+  beforeDestroy() {
+    this.stopRing()
+    this._log('EasyRingVueComponent unmounted')
   },
   render(_h) { // 用箭头就没法用this了
     const h = vue3h || _h

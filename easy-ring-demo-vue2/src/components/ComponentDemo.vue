@@ -83,9 +83,6 @@ export default {
       this.intervalCount += 1
     }, 1000)
   },
-  beforeDestroy(){
-    this.open = false // TODO: 切换开关的时候没有把声音关掉
-  }
 }
 </script>
 
