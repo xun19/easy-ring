@@ -31,7 +31,7 @@
 | ------ | ------- | ------- | ------------------ | ------------------------------------------------------------ |
 | open   | Boolean | √ | false  | 开启组件。将其设为true是使用本组件的前提 |
 | ring   | Boolean | √ |false  | 是否开始播放音效。当设置为false时，则为关闭音效 |
-| src    | String  | × | ''    | 铃声音频文件的地址，需传入绝对路径。如果不清楚如何获取绝对路径，可参见下文《关于音效.自定义音频源》一节，这其实非常简单             |
+| src    | String  | × | ''    | 铃声音频文件的地址，可以是网络资源或者项目内资源。项目内资源需传入绝对路径。如果不清楚如何获取绝对路径，可参见下文《关于音效.自定义音频源》一节，这其实非常简单             |
 | loop    | Boolean | × |  true    |  是否循环播放               |
 |   defaultMusic  | String  | × |'EZIOS_FAMILY'    | 默认铃声曲目。目前可选值：'LITTLE_STAR' \| 'TWO_TIGERS' \| 'EZIOS_FAMILY' \| 'CASTLE_IN_THE_SKY'               |
 |  musicText   | String  | × | ''    |     以简谱来自定义音效。详见下文《关于音效.自定义简谱音效》一节           |
@@ -250,9 +250,9 @@ msg.onUnmount(() => {
 这三种音效的播放优先级为: 自定义音频源 > 自定义简谱音效 > 内置默认音效
 
 ### 1）自定义音频源
-将你的音频文件地址传给组件的src参数，即可使用自定义音频源。
+将你的音频文件地址传给组件的src参数，即可使用自定义音频源。可以是网络资源或者项目内资源。
 
-采用的是绝对路径，因为使用相对路径容易在本地构建或者打包过程中出现问题，且作为第三方组件的easy-ring无法从你项目里的相对路径找到音频文件。
+项目内资源采用的是绝对路径，因为使用相对路径容易在本地构建或者打包过程中出现问题，且作为第三方组件的easy-ring无法从你项目里的相对路径找到音频文件。
 
 获取绝对路径其实非常简单，在Vue或者React环境（可能也包括其他构建环境）中使用下列方式：
 ```javascript
@@ -325,8 +325,8 @@ musicText参数的值需要是一串字符串，里面主要由数字、"-"组�
 - 弹出一个询问“是否允许开启音效”的弹窗
 
 ## 感谢
-自定义简谱音效功能的实现，要感谢张鑫旭大佬（https://www.zhangxinxu.com/wordpress/2017/06/html5-web-audio-api-js-ux-voice/） 的启发 、以及王睿
-大佬（https://www.jianshu.com/p/4f4c8bbd9775、https://www.zhanhu56.com/h5/music_box/、https://github.com/chchlsh/MusicBox） MusicBox组件的功能支持👍，他们的灵感和帮助让这个组件有了更多拓展性和乐趣。
+自定义简谱音效功能的实现，要感谢张鑫旭大佬【https://www.zhangxinxu.com/wordpress/2017/06/html5-web-audio-api-js-ux-voice/ 】的启发 、以及王睿
+大佬【https://www.jianshu.com/p/4f4c8bbd9775、https://www.zhanhu56.com/h5/music_box/、https://github.com/chchlsh/MusicBox 】MusicBox组件的功能支持👍，他们的灵感和帮助让这个组件有了更多拓展性和乐趣。
 
 ## 项目地址
 https://github.com/xun19/easy-ring
@@ -653,8 +653,8 @@ The above example is not very suitable for the situation after refreshing the pa
 - Show a dialog asking for "Allow me to turn on sound effects?"
 
 ## Thanks
-The implementation of the custom sheet music effect is thanks to the inspiration of Zhang Xinxu (https://www.zhangxinxu.com/wordpress/2017/06/html5-web-audio-api-js-ux-voice/) and Wang Rui
-The MusicBox component is supported 👍 by the https://www.jianshu.com/p/4f4c8bbd9775, https://www.zhanhu56.com/h5/music_box/, https://github.com/chchlsh/MusicBox, and their inspiration and help make this component more expansive and fun.
+The implementation of the custom sheet music effect is thanks to the inspiration of Zhang Xinxu 【https://www.zhangxinxu.com/wordpress/2017/06/html5-web-audio-api-js-ux-voice/ 】and Wang Rui
+who supports the MusicBox component 👍 【 https://www.jianshu.com/p/4f4c8bbd9775, https://www.zhanhu56.com/h5/music_box/, https://github.com/chchlsh/MusicBox 】, and their inspiration and help make this component more expansive and fun.
 
 ## github
 https://github.com/xun19/easy-ring
