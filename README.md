@@ -3,7 +3,7 @@
   <img src="https://img.shields.io/badge/style-easy---" alt="easy">
 </p>
 
-## 语言 / Language
+## Choose Language/选择语言
 - [中文](#user-content-chinese)
 - [English](#user-content-english)
 
@@ -151,7 +151,8 @@ msg.onRead(() => {
 
 </script>
 ```
-DEMO项目地址：https://github.com/xun19/easy-ring/tree/master/easy-ring-demo-vue2、https://github.com/xun19/easy-ring/tree/master/easy-ring-demo-vue3
+Vue2 DEMO项目地址：https://github.com/xun19/easy-ring/tree/master/easy-ring-demo-vue2
+Vue3 DEMO项目地址：https://github.com/xun19/easy-ring/tree/master/easy-ring-demo-vue3
 
 ### 2）React组件形式
 当作一般的React组件引入、使用即可。主要通过open、ring参数进行控制。
@@ -210,7 +211,7 @@ export default Demo = () => {
 ```
 DEMO项目地址：https://github.com/xun19/easy-ring/tree/master/easy-ring-demo-react
 ### 3）js函数调用的形式
-easy-ring提供了一个CommonEasyRing类，该类的实例有三个方法：open( )、ring( )、stop( )、close( )，分别用于开启组件、播放音效、暂停音效、关闭组件。
+easy-ring提供了一个CommonEasyRing类，该类的实例有4个方法：open( )、ring( )、stop( )、close( )，分别用于开启组件、播放音效、暂停音效、关闭组件。
 
 - ① 开启组件：open( )
 ***PS：这一步需要放到一个交互（比如：按钮点击）里进行触发，这是为了规避目前浏览器的限制。详细可参见下文 《关于open参数以及浏览器限制的解释》一章***
@@ -300,8 +301,6 @@ musicText参数的值需要是一串字符串，里面主要由数字、"-"组�
 | 艾吉奥之家（EZIOS_FAMILY） | '.6 - 1 - 2 - 3 - .6 - 1 - 2 - 1 - .6 - 1 - 2 - 3 - .6 - 1 - 2 - 1 - .6 - 1 - 2 - 3 - 6 - 7 - 1. - 2. - 3. - - - - - -' |
 | 天空之城（CASTLE_IN_THE_SKY） | '.6 .7 1 - - .7 1 - 3 - .7 - - - - .3 .3 .6 - - .5 .6 - 1 - .5 - - - - .3 .3 .4 - - .3 .4 - 1 - .3 - - - - 1 1 1 .7 - - .4 .4 - .7 - .7 - - - - -' |
 
-这实际上使用了Web Audio API的前端技术。这块要感谢张鑫旭大佬（https://www.zhangxinxu.com/wordpress/2017/06/html5-web-audio-api-js-ux-voice/） 的启发 、以及前端王睿
-大佬（https://www.jianshu.com/p/4f4c8bbd9775、https://www.zhanhu56.com/h5/music_box/、https://github.com/chchlsh/MusicBox） MusicBox组件的功能支持👍，他们的灵感和帮助让这个组件有了更多拓展性和乐趣。
 
 ### 3）内置默认音效
 如果没有给src参数、musicText参数传递值的时候，组件会使用默认音效。目前的默认音效为《Ezio's Family》，这是游戏《刺客信条》的一首主题曲。
@@ -338,32 +337,32 @@ https://github.com/xun19/easy-ring
 ## - Document in English 
 
 ## Introduction
-This is a **simple, versatile** and **cool** front-end sound 🔔 component~
+This is a **general, versatile** and **cool** front-end sound 🔔 component~
 
 It can be used in many scenarios such as ringtones, message sounds, interactive sounds, and so on.
 
 ## Feature
 - Multiple development environments. Available in **Vue, React, VanillaJS/Native JS (ES6+)**.
-- Multiple calling styles. You can use this component as a Vue Component , React Component, and even a JS Object.
-- Customizable audio source
-- Support for using NMN（Numbered musical notation） to customize song sounds
-- Built-in default sound effects
-- Loop play/single play
+- Multiple styles for using. You can use this component as **a Vue Component , React Component, and even a JS Object**.
+- Customizable audio source.
+- Support for **using NMN（Numbered musical notation） to customize song sounds.**
+- Built-in default sound effects.
+- Loop and non-loop playing.
 
 ## params
 
 
 | name | type    | required | default | remark                                                         |
 | ------ | ------- | ------ | ------------------ | ------------------------------------------------------------ |
-| open   | Boolean | √ | false  | Open the component. Setting it to true is a prerequisite for using this component. |
-| ring   | Boolean | √ |false  | Whether to start playing the sound effect. When set to false, the sound effect is turned off. |
-| src    | String  | × | ''    |  The address of the ringtone audio file, which needs to be passed into the absolute path. If you are not sure how to obtain the absolute path, see About Sound Effects below. Custom Audio Sources" section, which is actually very simple.             |
+| open   | Boolean | √ | false  | Open the component. Setting it to 'true' is a prerequisite for using this component. |
+| ring   | Boolean | √ |false  | Whether to start playing the sound effect. When set to 'false', the sound effect will turn off. |
+| src    | String  | × | ''    |  The src of the audio file, which can be a network resource or an intra-project resource. Resources in the project need provide a absolute path. If you are not sure how to get the absolute path, please read the section "About Sound Effects - Custom Audio Source".You will find that it's very easy.             |
 | loop    | Boolean | × |  true    |  Whether to loop or not.               |
-|   defaultMusic  | String  | × |'EZIOS_FAMILY'    | The default ringtone track. Currently an optional value：'LITTLE_STAR' \| 'TWO_TIGERS' \| 'EZIOS_FAMILY' \| 'CASTLE_IN_THE_SKY'               |
-|  musicText   | String  | × | ''    |     Customize the sound effects with a simple score. See "About Sound Effects" below. Customize the Notation Sound Effects section           |
-|  log   | Boolean  | × |true    | Whether to print the log.               |
-|  ended   | Function  | × |function() {}   | Audio playback (once) end-of-event callback.             |
-|  setRing   | Function  | √(React) | -   | Required for React components. The value passed in is the status update function corresponding to the ring after using the useState Hook. For details, please refer to the chapter "Use as a React Component"              |
+|   defaultMusic  | String  | × |'EZIOS_FAMILY'    | The default sound effect which you can use  directly. Currently an optional value：'LITTLE_STAR' \| 'TWO_TIGERS' \| 'EZIOS_FAMILY' \| 'CASTLE_IN_THE_SKY'               |
+|  musicText   | String  | × | ''    |     Customize the sound effects with useing a NMN（Numbered musical notation）string. Read the section "About Sound Effects - Custom NMN（Numbered musical notation） Sound Effects" for more details.          |
+|  log   | Boolean  | × |true    | Whether to output the log.               |
+|  ended   | Function  | × |function() {}   | A function which be called when the audio end playing ( This refers to the termination of each  playing round of the \<audio />, not the end of the component ).        |
+|  setRing   | Function  | √(React) | -   | Required for React components. The value is the state-updating function corresponding to the 'ring' variable after using the React Hook 'useState'. For more details, please refer to the section "Use as a React Component"              |
 
 
 ## Installation
@@ -371,12 +370,12 @@ It can be used in many scenarios such as ringtones, message sounds, interactive 
 npm i easy-ring
 ```
 ## Usage
-Using easy-ring requires only three simple operations,
+Using easy-ring requires only 3 easy operations,
 - ① Open the component.
 - ② Play the sound effect. Lets the component start ringing.
 - ③ Pause the sound effect. Quiets the component.
 
-Different styles of use basically follow these three operations, but there are some differences in the details of use.
+Different styles of use basically follow these 3 operations, but there are some differences in the details of use.
 
 ### 1）Use as an Vue Component
 It can be imported and used as a general Vue component. It is mainly controlled by the 'open' and 'ring' parameters.
@@ -387,9 +386,9 @@ It can be imported and used as a general Vue component. It is mainly controlled 
 
 - ③ Pause Sound Effect: Set the 'ring' to false
 
-According to your own needs or effects, decide when to play and pause the sound effect, and control the update of the ring parameter value under the corresponding logic code
+According to your own needs or effects, decide when to play and pause the sound effect, and control the update of the 'ring' parameter value under the corresponding logic code
 
-Here are examples of Vue2 and Vue3 for reference:
+Here are examples in Vue2 and Vue3 for reference:
 #### Vue2
 
 ```javascript
@@ -475,7 +474,8 @@ msg.onRead(() => {
 
 </script>
 ```
-DEMO：https://github.com/xun19/easy-ring/tree/master/easy-ring-demo-vue2、https://github.com/xun19/easy-ring/tree/master/easy-ring-demo-vue3
+Vue2 DEMO：https://github.com/xun19/easy-ring/tree/master/easy-ring-demo-vue2
+Vue3 DEMO：https://github.com/xun19/easy-ring/tree/master/easy-ring-demo-vue3
 
 ### 2）Use as a React Component
 It can be imported and used as a general React component. It is mainly controlled by the 'open' and 'ring' parameters.
@@ -488,7 +488,7 @@ It can be imported and used as a general React component. It is mainly controlle
 
 According to your own needs or effects, decide when to play and pause the sound effect, and control the update of the ring parameter value under the corresponding logic code
 
-PS: Don't forget to pass in a setRing parameter, which is actually the status update function corresponding to the ring parameter, and easy-ring will use it to do some automatic status update operations. This will make easy-ring more foolish and automated.
+PS: Don't forget to provide a 'setRing' parameter, which is actually the state-updating function corresponding to the 'ring' parameter, and easy-ring will use it to do some automatic state-updating operations. This will make easy-ring more Fool-style and automated.
 
 Refer to the following example:
 
@@ -536,7 +536,7 @@ export default Demo = () => {
 DEMO：https://github.com/xun19/easy-ring/tree/master/easy-ring-demo-react
 
 ### 3）Use with Javascript Function
-easy-ring provides a CommonEasyRing class with three methods: open( ), ring( ), ,stop ( ) and close( ), which are used to open the component, play the sound effect, pause the sound effect and close the component.
+easy-ring provides a CommonEasyRing class with 4 methods: open( ), ring( ), ,stop ( ) and close( ), which are used to open the component, play the sound effect, pause the sound effect and close the component.
 
 - ① Open component: open( )
 ***PS: This step needs to be triggered in an interaction (e.g. button click), which is to circumvent the limitations of the current browser. See the chapter "Explanation of the open parameter and browser limitations" below for details.***
@@ -628,9 +628,6 @@ Here are a few of the notation songs currently built into this component for ref
 | 艾吉奥之家（EZIOS_FAMILY） | '.6 - 1 - 2 - 3 - .6 - 1 - 2 - 1 - .6 - 1 - 2 - 3 - .6 - 1 - 2 - 1 - .6 - 1 - 2 - 3 - 6 - 7 - 1. - 2. - 3. - - - - - -' |
 | 天空之城（CASTLE_IN_THE_SKY） | '.6 .7 1 - - .7 1 - 3 - .7 - - - - .3 .3 .6 - - .5 .6 - 1 - .5 - - - - .3 .3 .4 - - .3 .4 - 1 - .3 - - - - 1 1 1 .7 - - .4 .4 - .7 - .7 - - - - -' |
 
-This actually uses the front-end technology of the Web Audio API. This piece is thanks to the inspiration of Zhang Xinxu (https://www.zhangxinxu.com/wordpress/2017/06/html5-web-audio-api-js-ux-voice/) and the front-end Wang Rui
-The MusicBox component is supported 👍 by the https://www.jianshu.com/p/4f4c8bbd9775, https://www.zhanhu56.com/h5/music_box/, https://github.com/chchlsh/MusicBox, and their inspiration and help make this component more expansive and fun.
-
 ### 3）Built-in default sound effects
 If no value is passed to the src parameter or the musicText parameter, the component will use the default sound effect. The current default sound effect is Ezio's Family, a theme song for the game Assassin's Creed.
 
@@ -659,4 +656,4 @@ who supports the MusicBox component 👍 【 https://www.jianshu.com/p/4f4c8bbd9
 ## github
 https://github.com/xun19/easy-ring
 
-If you think this component has brought you help, welcome to give a Star and provide valuable advice ~ 😊
+If you think this component has brought you help, welcome to star and provide valuable advice ~ 😊
